@@ -4,11 +4,10 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
-    categories = models.ManyToManyField('PostCategory')
+    '''categories = models.ManyToManyField('PostCategory')'''
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
@@ -21,6 +20,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-
+'''
 class PostCategory(models.Model):
     name = models.CharField(max_length=120)
+'''
